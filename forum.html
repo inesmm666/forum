@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="Inês Rodrigues Sousa Mendes da Silva - 2014196837" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta property="og:image" content="https://ibb.co/6WmRrLs">
+        <meta property="og:description" content= "Aplicação web usando HTML 5 (HyperText Markup Language 5) e CSS3 (Cascade Style Sheets 3), que tem como objectivo gerir noticias e projetos de uma empresa - Projeto 5 desenvolvido para a disciplina de PAJ 2021/22">
+        <meta property="og:title" content="A">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" type="text/css" href="myStyle.css">
+		<title data-i18n="projs"></title>
+		<meta name="description" content="Projecto PAJ - AoR 2022">
+		<!--<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script type="text/JavaScript" defer src="myscript.js"></script> 
+		<script type="text/JavaScript" defer src="api.js"></script> 
+		<script type="text/JavaScript" defer src="forum.js"></script> 
+		
+		<!--<script type="module" src="./translator/translator.js" defer></script>-->
+		
+	</head>
+	<body>
+		<!-- Barra de Navegação no topo-->
+		<nav class="topnavbar">
+			<div class="nav-logo-links">
+                <img src="images/logo.jpg" alt="" class="logo" >
+                
+        <a class="active "href="forum.html" >Forum</a>
+        <a href="lista_projectos.html" data-i18n="projs">Projects</a>
+        <a href="messages.html" >Messages</a>
+        <a href="notifications.html" >Notifications</a>
+        <a class= "perfil-nav" href="perfil.html" data-i18n="user">User</a>
+                
+                <!--<a href="notifications.html" class="notification-nav " >Notificações<span class="red-circle" id ="circle-notificationsUnread">--</span></a>-->
+                
+            </div>
+			<!--  com JS: a mensagem de boas vindas só deverá aparecer depois de termos um nome preenchido, caso contrário não aparecer nada-->
+			<div class= "navbar-message-user">
+				<a href="registo.html" class="registo-nav" data-i18n="title" ></a>	
+				<a href="login.html" class="login-nav" data-i18n="login"></a>	
+				<img src="images/pic_user.png" alt="Fotografia do Utilizador" class="user-pic">
+				<div class= "nav-nome-logout">
+					<p class="mensagemNav"></p>
+					<button class="logout" data-i18n="logout">Logout </button>
+				</div>
+				<!--<select class="filter" change-language>
+					<option value="pt-pt">PT</option>
+					<option value="en">EN</option> </select>-->
+			</div>
+		</nav>
+	<div class="topnavbar subnav-content otherTargetUser onlyAdminPriv" >
+            <div>
+            </div>
+            <!-- https://www.w3schools.com/charsets/ref_utf_dingbats.asp -->
+            <div class= "navbar-message-user otherTargetUser onlyAdminPriv" subnav-bar>
+                <p class="otherTargetUserLabel onlyAdminPriv changeUser hide" data-i18n="selected"></p>
+                <p id="selectedUsername" class="otherTargetUser onlyAdminPriv"></p>
+                <button class="forgotOtherTargetUser onlyAdminPriv changeUser hide"><span>&#10060;</span></button>
+                <button class="changeOtherTargetUser  onlyAdminPriv"><span>&#128260;</span></button>
+            </div>
+        </div>
+
+
+		<main class="main-content">
+			<h1 >Forum</h1>
+			<div class="lista-user new-ativ-form">
+				<button type="button" class="imageButton criar" id="new-proj" value="New Post"> New Post
+            
+                </button>
+                <script type="text/javascript">
+                  document.getElementById("new-proj").onclick = function () {
+                      location.href = "newPost.html";
+                  };
+              </script>
+			  <div class="divForum">
+				<select name="favStuff" class="filterSelectSmall" id="favs" onchange="updateF()" >
+				<option value="ALL" >All</option>
+				<option value="IDEA">Idea</option>
+				<option value="NECESSITY">Necessity</option>	
+				</select>
+	
+				  <select name="creatorStuff" class="filterSelectSmallf" id="filterDate" onChange="update()" required >
+					<option value="all" disabled selected hidden>Order by</option>
+					<option value="date">Creation Date</option>
+					<option value="date">Last Update</option>
+					<option value="votes">Votes</option></select> 
+					
+					<input type="text" id="forumSearch" class="searchBarF" onkeyup="myFunction()" placeholder="Search By Name">
+<br>
+</div>
+			<p class="msg nullfielderror hide" id="msgIndex" data-i18n="forcedout"> </p>
+			<div>
+				
+				<ul id="lista-projetos-global">
+				</ul></div></div>
+		</main>
+		<footer>
+			<p data-i18n="footer">@AoR-INNOVATION LAB MANAGEMENT SOLUTION 2022</p>
+			<p class="footer-small-text"></p>
+		</footer>
+	</body>
+</html>
